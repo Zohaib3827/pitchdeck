@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pitch Deck</title>
+    <link rel="stylesheet" href="styles.css">
+
+</head>
+
+<style>
+    body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f0f0f0;
+}
+
+.pitch-deck {
+    width: 80%;
+    max-width: 800px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    background-color: white;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.slide {
+    display: none;
+    padding: 20px;
+    text-align: center;
+}
+
+.slide h1 {
+    margin-bottom: 20px;
+}
+
+.slide p {
+    font-size: 1.2em;
+}
+
+.navigation {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 20px;
+    background-color: #007BFF;
+    color: white;
+}
+
+.navigation button {
+    background-color: #0056b3;
+    border: none;
+    padding: 10px 20px;
+    color: white;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.navigation button:hover {
+    background-color: #003d82;
+}
+
+</style>
+
+<body>
+    <div class="pitch-deck">
+        <div class="slide" id="slide1">
+            <h1>Welcome to Our Pitch Deck</h1>
+            <p>Introduction and company overview</p>
+        </div>
+        <div class="slide" id="slide2">
+            <h1>Problem Statement</h1>
+            <p>What problem are we solving?</p>
+        </div>
+        <div class="slide" id="slide3">
+            <h1>Our Solution</h1>
+            <p>How we are solving the problem</p>
+        </div>
+        <div class="slide" id="slide4">
+            <h1>Market Opportunity</h1>
+            <p>The market potential and target audience</p>
+        </div>
+        <div class="slide" id="slide5">
+            <h1>Business Model</h1>
+            <p>How we plan to make money</p>
+        </div>
+        <div class="slide" id="slide6">
+            <h1>Contact Us</h1>
+            <p>Email: info@company.com</p>
+        </div>
+        <div class="navigation">
+            <button onclick="prevSlide()">Previous</button>
+            <button onclick="nextSlide()">Next</button>
+        </div>
+    </div>
+
+    <script src="scripts.js"></script>
+</body>
+</html>
+
+<script>
+    let currentSlide = 0;
+const slides = document.querySelectorAll('.slide');
+
+function showSlide(index) {
+    slides.forEach((slide, i) => {
+        slide.style.display = (i === index) ? 'block' : 'none';
+    });
+}
+
+function nextSlide() {
+    currentSlide = (currentSlide + 1) % slides.length;
+    showSlide(currentSlide);
+}
+
+function prevSlide() {
+    currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+    showSlide(currentSlide);
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    showSlide(currentSlide);
+});
+
+</script>
